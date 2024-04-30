@@ -1,13 +1,43 @@
 <html>
     <head>
         <title>Vanilla JS Test Call</title>
-        <script>
+        <style>
+            canvas {
+                background-color: #ffdd99;
+            }
+        </style>
+        <!-- domain locking in effect, this script will only run from 
+            https://dduwab.github.com/ and http://127.0.0.1:3000/ for local testing.
+        -->
+        <script src="https://getscript.canvaslanguage.workers.dev/" referrerpolicy="origin-when-cross-origin">
         </script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => {
+                Animate.SetErrorDiv("log");
+                Animate.Run(document.getElementById("source").value, document.getElementById("gameCanvas"), "Start");
+            });
+        </script>
+
     </head>
     <body>
         <p>
-            Hello. This isn't done yet.
+            Hello. This is probably good enough.
         </p>
+        <canvas width="300" height="300" id="gameCanvas"></canvas>
+<br/>
+<textarea id="source" wrap=off rows="8" cols="50">
+create routine as Start
+	launch TS
+end
+create textsprite as TS
+	where text="Hello World" x=150 y=150 align="center"
+	having alt=rot1
+end
+create rotation as rot1
+	where speed=-100
+end
+</textarea>
+        <div id="log"></div>
         <p>
             <a href="..">Back</a>
         </p>
